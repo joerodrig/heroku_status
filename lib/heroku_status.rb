@@ -1,5 +1,6 @@
-require "heroku_status/version"
+# require "heroku_status/version"
 require "Faraday"
+require "json"
 
 # https://devcenter.heroku.com/articles/heroku-status#heroku-status-api-v3
 module HerokuStatus
@@ -9,7 +10,7 @@ module HerokuStatus
   # @return {hash}
   def current_status
     response = Faraday.get("https://status.heroku.com/api/v3/current-status")
-    response.body
+    JSON.parse(response.body)
   end
 
   # Retrieve a list of issues from Heroku with optional filters
@@ -21,7 +22,7 @@ module HerokuStatus
     filter_since = filters[:since] ? `since=#{filters[:since]}` : ""
     filter_limit = filters[:limit] ? `limit=#{filters[:limit]}` : ""
     response = Faraday.get(`https://status.heroku.com/api/v3/issues?#{filter_since}&#{filter_limit}`)
-    response.body
+    JSON.parse(response.body)
   end
 
   # Return a response for a particular issue
@@ -29,6 +30,6 @@ module HerokuStatus
   # @return {hash}
   def issue(issue_id)
     response = Faraday.get(`https://status.heroku.com/api/v3/issues/#{issue_id}`)
-    response.body
+    JSON.parse(response.body)
   end
 end
