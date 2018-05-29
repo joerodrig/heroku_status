@@ -1,5 +1,7 @@
 require "bundler/setup"
+require 'webmock/rspec'
 require "heroku_status"
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
