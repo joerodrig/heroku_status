@@ -1,5 +1,5 @@
 # require "heroku_status/version"
-require "Faraday"
+require "faraday"
 require "json"
 
 # https://devcenter.heroku.com/articles/heroku-status#heroku-status-api-v3
