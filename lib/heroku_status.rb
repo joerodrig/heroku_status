@@ -1,4 +1,4 @@
-# require "heroku_status/version"
+require "heroku_status/version"
 require "faraday"
 require "json"
 
