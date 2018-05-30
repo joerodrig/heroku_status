@@ -10,7 +10,11 @@ module HerokuStatus
   # @return {hash}
   def current_status
     response = Faraday.get("https://status.heroku.com/api/v3/current-status")
-    JSON.parse(response.body)
+    if response.status != 200
+      Errors.error(response, "An issue occured while fetching current issue status.")
+    else
+      JSON.parse(response.body)
+    end
   end
 
   # Retrieve a list of issues from Heroku with optional filters
@@ -22,7 +26,11 @@ module HerokuStatus
     filter_since = filters[:since] ? `since=#{filters[:since]}` : ""
     filter_limit = filters[:limit] ? `limit=#{filters[:limit]}` : ""
     response = Faraday.get("https://status.heroku.com/api/v3/issues?#{filter_since}&#{filter_limit}")
-    JSON.parse(response.body)
+    if response.status != 200
+      HerokuStatus::Errors.error(response, "An issue occured while fetching issues.")
+    else
+      JSON.parse(response.body)
+    end
   end
 
   # Return a response for a particular issue
@@ -31,14 +39,21 @@ module HerokuStatus
   def issue(issue_id)
     response = Faraday.get("https://status.heroku.com/api/v3/issues/#{issue_id}")
     if response.status != 200
-      {
-        status: "error",
-        message: "An issue occured while fetching the issue.",
-        error_code: response.status,
-        body: response.body
-      }
+      HerokuStatus::Errors.error(response, "An issue occured while fetching the issue.")
     else
       JSON.parse(response.body)
+    end
+  end
+
+  module Errors
+    module_function
+    def error(res, msg)
+      {
+        status: "error",
+        message: msg,
+        error_code: res.status,
+        body: res.body
+      }
     end
   end
 end
