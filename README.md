@@ -1,4 +1,5 @@
 # Heroku::Status
+**Experimental**
 
 The heroku_status gem is meant to be a simple way to query the [Heroku Status API](https://status.heroku.com/)
 
