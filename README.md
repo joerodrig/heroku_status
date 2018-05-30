@@ -1,5 +1,5 @@
 # Heroku_Status
-https://travis-ci.org/joerodrig/heroku_status.svg?branch=master
+[build](https://travis-ci.org/joerodrig/heroku_status.svg?branch=master)
 
 **Experimental**
 
