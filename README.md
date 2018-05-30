@@ -1,5 +1,5 @@
 # Heroku_Status
-[build](https://travis-ci.org/joerodrig/heroku_status.svg?branch=master "badge")
+[![Build Status](https://travis-ci.org/joerodrig/heroku_status.svg?branch=master)](https://travis-ci.org/joerodrig/heroku_status)
 
 **Experimental**
 
