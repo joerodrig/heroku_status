@@ -1,9 +1,6 @@
 # Heroku_Status
 [![Build Status](https://travis-ci.org/joerodrig/heroku_status.svg?branch=master)](https://travis-ci.org/joerodrig/heroku_status)
 
-**Experimental**
-
-
 The heroku_status gem is meant to be a simple way to query the [Heroku Status API](https://status.heroku.com/)
 
 ## Installation
