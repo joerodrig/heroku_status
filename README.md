@@ -24,7 +24,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO
+Require the gem in any files you're using it in:  
+`require "heroku_status"`
+
+Retrieve the current issue status:  
+`HerokuStatus.current_status`
+
+Retrieve the issue status for a particular issue:  
+`HerokuStatus.issue(1)`
+
+Retrieve a range of issues, organized by date and paginated:  
+`HerokuStatus.issues({since: "2012-04-24", limit: 1})`
 
 ## Development
 
