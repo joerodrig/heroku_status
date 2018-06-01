@@ -33,7 +33,7 @@ module HerokuStatus
     end
   end
 
-  # Return a response for a particular issue
+  # Retrieve the status for a particular issue
   # @param {integer} issue_id
   # @return {hash}
   def issue(issue_id)
