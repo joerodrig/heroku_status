@@ -23,8 +23,9 @@ module HerokuStatus
   # - {integer} limit - 1
   # @return {hash}
   def issues(filters={})
-    filter_since = filters[:since] ? `since=#{filters[:since]}` : ""
-    filter_limit = filters[:limit] ? `limit=#{filters[:limit]}` : ""
+    filter_since = filters[:since] ? "since=#{filters[:since]}" : ""
+    filter_limit = filters[:limit] ? "limit=#{filters[:limit]}" : ""
+    
     response = Faraday.get("https://status.heroku.com/api/v3/issues?#{filter_since}&#{filter_limit}")
     if response.status != 200
       HerokuStatus::Errors.error(response, "An issue occured while fetching issues.")
