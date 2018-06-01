@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    heroku_status (0.2.0)
+    heroku_status (0.2.2)
       faraday (~> 0.15)
 
 GEM
